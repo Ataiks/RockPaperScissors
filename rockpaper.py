@@ -5,7 +5,6 @@ print("\t\t\tWelcome to Rock Paper Scissors\n")
 moves={"R":"Rock", "P":"Paper", "S":"Scissors"}
 ms=["R","P","S"]
 
-player=1
 comp_move=random.choice(ms)
 
 def usermove():
@@ -21,7 +20,8 @@ def check(comp_move,choice):
     if choice in moves.keys():
         print("Player: {}\t : CPU: {}" .format(moves[choice] , moves[comp_move] ))
         if choice == comp_move :
-            print("Draw")
+            print("Draw \n Round Repeats")
+            comp_move
             usermove()
         elif choice == "P" and comp_move != "S":
             print("Hurray you Win!")
@@ -36,7 +36,9 @@ def check(comp_move,choice):
         if player :
             usermove()
 
-while player:
+rounds= int(input("Enter number of rounds? "))
+while rounds:
     usermove()
-
+    rounds-=1
+    print(' rounds left:' , rounds)
 print("Thanks for Playing!")
